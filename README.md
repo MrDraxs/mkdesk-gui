@@ -1,4 +1,4 @@
-#depencendies
+# depencendies
   zenity
 # how to install?
 ```
