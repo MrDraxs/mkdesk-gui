@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+scripts=($(ls $PWD/scripts/*.sh))
+h=$HOME
+
+for sc in ${scripts[*]}; do
+  sudo chmod +x $sc
+  b=${sc##*/}
+  echo "[Desktop Entry]
+	Type=Application
+	Name=mkdesk
+	Exec=/usr/local/bin/mkdesk-gui" > "$h/.local/share/applications/mkdesk.desktop"
+  echo "[moving $sc into /usr/local/bin as ${b%.*}]"
+  sudo cp -r $sc /usr/local/bin/${b%.*}
+done
